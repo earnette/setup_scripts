@@ -1,0 +1,19 @@
+#! /bin/bash
+# Eric Arnette setup script for new user accounts
+
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+# Copy repo files to /etc/yum.repos.d
+repos=( "$DIR/repos/*" )
+for i in  ${reps[@]}
+do
+    rsync $i "/etc/yum.repos.d"
+done
+
+# Install packages listed in the Yum repositories.
+packages=( `cat "$DIR/yumlist"`)
+
+for i in "${packages[@]}"
+do
+    yum install -y $i
+done
