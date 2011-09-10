@@ -1,0 +1,15 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+
+timesheet(){
+    ps=`date +%m/%d/%Y -d last-sunday`
+    ns=`date +%m/%d/%Y -d next-saturday`
+    echo -e "\033[1m$ps - $ns\033[0m"
+    task week end.after:$ps
+}
