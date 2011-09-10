@@ -1,3 +1,6 @@
 [user]
 	name = Eric Arnette
 	email = earnette@gmail.com
+[github]
+	user = earnette
+	token = a7eae5c0b813cfdca803359a2cc0db79

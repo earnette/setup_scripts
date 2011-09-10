@@ -17,3 +17,11 @@ for i in "${packages[@]}"
 do
     yum install -y $i
 done
+
+# Link personal config files to hidden locations.
+cfiles=( "$DIR/cfiles/*" )
+for i in ${cfiles[@]}
+do
+    name=".${i##*/}"
+    ln -s --backup=numbered $i "$HOME/$name" 
+done
