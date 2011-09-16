@@ -1,21 +1,35 @@
 #! /bin/bash
 # Eric Arnette setup script for new user accounts
 
+# Functions to help later.
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
 DIR="$( cd "$( dirname "$0" )" && pwd )"
+dist=`lsb_release -i -s`
 
 # Copy repo files to /etc/yum.repos.d
-repos=( "$DIR/repos/*" )
-for i in  ${reps[@]}
-do
-    rsync $i "/etc/yum.repos.d"
-done
+if [ "$dist" = "Fefora" ]; then
+    repos=( "$DIR/repos/*" )
+    for i in  ${reps[@]}
+    do
+	rsync $i "/etc/yum.repos.d"
+    done
+fi
 
-# Install packages listed in the Yum repositories.
-packages=( `cat "$DIR/yumlist"`)
-
+# Install packages listed in the packlist file.
+packages=( `cat "$DIR/packlist"`)
+echo $dist
 for i in "${packages[@]}"
 do
-    yum install -y $i
+    if command_exists $i;then
+	if [ "$dist" = "Fedora" ]; then
+	    yum install -y $i
+	elif [ "$dist" = "Ubuntu" ]; then
+	    apt_get install -y $i
+	fi
+    fi
 done
 
 # Link personal config files to hidden locations.
@@ -24,4 +38,5 @@ for i in ${cfiles[@]}
 do
     name=".${i##*/}"
     ln -s --backup=numbered $i "$HOME/$name" 
+    echo "Created symlink to $name"
 done

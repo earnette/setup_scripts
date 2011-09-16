@@ -14,15 +14,15 @@
 data.location=/home/earnette/.task
 
 # Color theme (uncomment one to use)
-#include /usr/local/share/doc/task/rc/light-16.theme
-#include /usr/local/share/doc/task/rc/light-256.theme
-#include /usr/local/share/doc/task/rc/dark-16.theme
-#include /usr/local/share/doc/task/rc/dark-256.theme
-#include /usr/local/share/doc/task/rc/dark-red-256.theme
-#include /usr/local/share/doc/task/rc/dark-green-256.theme
-#include /usr/local/share/doc/task/rc/dark-blue-256.theme
-#include /usr/local/share/doc/task/rc/dark-violets-256.theme
-#include /usr/local/share/doc/task/rc/dark-yellow-green.theme
+#include /home/earnette/.task/task/themes/light-16.theme
+#include /home/earnette/.task/task/themes/light-256.theme
+#include /home/earnette/.task/task/themes/dark-16.theme
+#include /home/earnette/.task/task/themes/dark-256.theme
+#include /home/earnette/.task/task/themes/dark-red-256.theme
+#include /home/earnette/.task/task/themes/dark-green-256.theme
+#include /home/earnette/.task/task/themes/dark-blue-256.theme
+include /home/earnette/.task/task/themes/dark-violets-256.theme
+#include /home/earnette/.task/task/themes/dark-yellow-green.theme
 
 report.week.description=All this week
 report.week.columns=id,end,entry,description
